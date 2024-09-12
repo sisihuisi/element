@@ -1,12 +1,12 @@
 ## TimePicker 时间选择器
 
- 用于选择或输入日期
+ 用于选择或输入时间
 
 ### 固定时间点
 
 提供几个固定的时间点供用户选择
 
-:::demo 使用 el-time-select 标签，分别通过`star`、`end`和`step`指定可选的起始时间、结束时间和步长
+:::demo 使用 el-time-select 标签，分别通过`start`、`end`和`step`指定可选的起始时间、结束时间和步长
 ```html
 <el-time-select
   v-model="value"

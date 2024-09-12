@@ -1089,7 +1089,7 @@ Filtra la tabla para encontrar la información que necesita.
 
 Personalice la columna de la tabla para que pueda integrarse con otros componentes.
 
-:::demo Tiene acceso a la siguiente información: row, column, $index, store (gestor de estados de la tabla) por [Scoped slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots).
+:::demo Tiene acceso a la siguiente información: row, column, $index, store (gestor de estados de la tabla) por [Scoped slots](https://v2.vuejs.org/v2/guide/components-slots#Scoped-Slots).
 ```html
 <template>
   <el-table
@@ -1170,7 +1170,7 @@ Personalice la columna de la tabla para que pueda integrarse con otros component
 ### Table con cabecera personalizada
 
 Se puede personalizar el encabezado de la tabla para que se pueda adaptar aún más.
-:::demo Puede personalizar el aspecto del encabezado con header [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
+:::demo Puede personalizar el aspecto del encabezado con header [scoped slots](https://v2.vuejs.org/v2/guide/components-slots#Scoped-Slots).
 ```html
 <template>
   <el-table
@@ -1815,13 +1815,14 @@ Puede personalizar el índice de la fila con la propiedad `type=index` de las co
 | ---------------------- | ---------------------------------------- | ---------------------------------------- | ------------------------------ | ---------------------------------------- |
 | data                   | Datos de la tabla                        | array                                    | —                              | —                                        |
 | height                 | Altura de la tabla. Por defecto esta tiene un tamaño `auto`. Si este valor es un número, la altura es medido en pixeles; si este valor es una cadena, la altura es afectada por estilos externos. | string/number                            | —                              | —                                        |
-| max-height             | Table's max-height. The legal value is a number or the height in px.                | string/number                            | —                              | —                                        |
+| max-height             | El max-height de la tabla. El valor puede ser un numero o el alto en px. | string/number                            | —                              | —                                        |
 | stripe                 | especifica si la tabla será en franjas   | boolean                                  | —                              | false                                    |
 | border                 | especifica si la tabla tiene bordes verticales | boolean                                  | —                              | false                                    |
 | size                   | tamaño de la tabla                       | string                                   | medium / small / mini          | —                                        |
 | fit                    | especifica si el ancho de la columna se adapta automáticamente a su contenedor | boolean                                  | —                              | true                                     |
 | show-header            | especifica si la cabecera de la tabla es visible | boolean                                  | —                              | true                                     |
 | highlight-current-row  | especifica si la fila actual es resaltado | boolean                                  | —                              | false                                    |
+| highlight-selection-row | resaltar la selección de líneas de verificación | boolean | — | false |
 | current-row-key        | clave de la fila actual, un ajuste de propiedad única | string,number                            | —                              | —                                        |
 | row-class-name         | función que devuelve nombres de clases personalizadas para una fila, o una cadena asignando nombres de clases para cada fila | Function({row, rowIndex})/String         | —                              | —                                        |
 | row-style              | función que devuelve el estilo personalizado para una fila, o un objeto asignando estilos personalizado para cada fila | Function({row, rowIndex})/Object         | —                              | —                                        |

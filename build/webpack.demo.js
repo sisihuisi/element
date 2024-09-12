@@ -7,6 +7,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const launchEditorMiddleware = require('launch-editor-middleware');
 
 const config = require('./config');
 
@@ -16,8 +17,7 @@ const isPlay = !!process.env.PLAY_ENV;
 const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: isProd ? {
-    docs: './examples/entry.js',
-    'element-ui': './src/index.js'
+    docs: './examples/entry.js'
   } : (isPlay ? './examples/play.js' : './examples/entry.js'),
   output: {
     path: path.resolve(process.cwd(), './examples/element-ui/'),
@@ -34,7 +34,16 @@ const webpackConfig = {
     host: '0.0.0.0',
     port: 8085,
     publicPath: '/',
-    hot: true
+    hot: true,
+    before: (app) => {
+      /*
+       * 编辑器类型 :此处的指令表示的时各个各个编辑器在cmd或terminal中的命令
+       * webstorm
+       * code // vscode
+       * idea
+      */
+      app.use('/__open-in-editor', launchEditorMiddleware('code'));
+    }
   },
   performance: {
     hints: false
@@ -148,6 +157,16 @@ if (isProd) {
     }),
     new OptimizeCSSAssetsPlugin({})
   );
+  // https://webpack.js.org/configuration/optimization/#optimizationsplitchunks
+  webpackConfig.optimization.splitChunks = {
+    cacheGroups: {
+      vendor: {
+        test: /\/src\//,
+        name: 'element-ui',
+        chunks: 'all'
+      }
+    }
+  };
   webpackConfig.devtool = false;
 }
 
